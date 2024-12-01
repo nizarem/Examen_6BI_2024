@@ -1,0 +1,35 @@
+import os
+import logging
+
+logger = logging.getLogger('EmailHandtekenignen')
+logger.setLevel(logging.DEBUG)
+
+handler = logging.FileHandler('app.log')
+handler.setLevel(logging.DEBUG)
+
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+
+logger.addHandler(handler)
+
+logger.info('code uitgevoerd')
+
+
+
+with open('departementen.csv', 'r', encoding='utf-8-sig') as file:
+    departementen = file.readlines()
+
+if os.path.exists('C:/Emailhandtekeningen'):
+    print('documenten zijn er al')
+    logger.info('documenten zijn er al')
+
+else:
+    os.makedirs('C:/Emailhandtekeningen', exist_ok=True)
+    logger.info('Map Emailhandtekeningen werd aangemaakt')
+
+    for departement in departementen:
+        departement = departement.strip()
+        documenten = os.path.join('C:/Emailhandtekeningen', departement)
+        os.mkdir(documenten)
+        logger.info(f'Map {departement} werd aangemaakt')
+        

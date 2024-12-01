@@ -1,1 +1,5 @@
-# Examen_6BI_2024
+# Python GUI
+**Install Ktinker** with everything imported
+
+# File editing
+**Install Ktinker** with everything imported

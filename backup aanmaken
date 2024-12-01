@@ -1,0 +1,19 @@
+from tkinter import filedialog
+from tkinter import *
+import shutil
+import os
+
+root = Tk()
+root.withdraw()
+
+folder_path = filedialog.askdirectory(title='Selecteer folders om te backupen')
+
+os.makedirs('C:/Backup', exist_ok=True)
+
+folder_name = os.path.basename(folder_path)
+backup_folder = os.path.join('C:/Backup', folder_name)
+
+shutil.copytree(folder_path, 'C:/Backup', dirs_exist_ok=True)
+print(f"backup compleet")
+print(f"Folder: {folder_path}")
+print(f"Backup: C:/Backup")
